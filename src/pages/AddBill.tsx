@@ -4,12 +4,12 @@ const AddBill = () => {
   const [title, setTitle] = useState("")
   const [amount, setAmount] = useState("")
   const [description, setDescription] = useState("")
-  const [datePaid, setDatePaid] = useState("")
+  const [date_paid, setDatePaid] = useState("")
   const [reference, setReference] = useState("")
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const new_bill_data = { title, amount, description, datePaid, reference }
+    const new_bill_data = { title, amount, description, date_paid, reference }
     const response = await fetch("http://localhost:8000/api/bills", {
         method: "POST",
         headers: {
@@ -79,12 +79,17 @@ const AddBill = () => {
                 <input 
                     type="text" 
                     required
-                    value={datePaid}
+                    value={date_paid}
                     onChange={(e) => setDatePaid(e.target.value)}
                     className="outline" 
                 />
             </div>
-            <button type="submit" className="bg-gray-800 hover:bg-gray-900 px-5 py-2 rounded-md">Add Bill</button>
+            <button 
+                type="submit" 
+                className="bg-gray-800 hover:bg-gray-900 px-5 py-2 rounded-md"
+            >
+                Add Bill
+            </button>
         </form>
         
     </section>
